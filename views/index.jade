@@ -1,4 +1,26 @@
 extends layout
 block content
-  h1 BrycePI's Raspberry PI!
-  p We are live now!
+    #headercontainer.container
+        #titleheader.row.bluebox
+            center
+                label.pagetitle PiTunes
+    br
+    
+    #songcontainer.container
+        each file in audioFiles
+            - var filename=file.replace('.mp3','')
+            .songrow.row.whitebox
+                .col-sm-12
+                    center
+                        label.songtitle #{filename}
+                    br
+                    center
+                        button(class="btn btn-default btn-block" type="button" onclick="window.location.href='/player?name="+ file +"';return false;") Play Remote
+                    
+                    center
+                        label Play Local
+                        br 
+                        audio(controls,preload="auto", id="done")
+                            source(src=file type="audio/mpeg") 
+                            em Your browser does not suppor the audio tag
+            br

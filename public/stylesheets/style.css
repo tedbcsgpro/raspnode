@@ -1,8 +1,84 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 10px;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:lightgray !important;
+  
+}
+.bluebox{
+    background-color:blue;
+    border-radius:25px;
+    color:white;
+    box-shadow: 2px 4px 6px rgba(0,0,0,.3)
+}
+.pagetitle
+{
+    font-size:24px;
+    margin:10px 0 10px 0;
+    background-color: white;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+             background-clip: text;
+}
+#titleheader
+{
+    color:white;
+}
+.whitebox{
+    background-color:#eeeeee;
+    border-radius:25px;
+    box-shadow: 2px 4px 6px rgba(0,0,0,.3);
+    padding:5px;
+    
+    padding-bottom:10px;
+}
+.songtitle {
+    font-weight: bold;
+   font-size:18px;
+    margin-top:6px;
+    padding:2px;
+    width:100%;
+    background-color: rgba(255,255,0,.5);
+    border-radius:20px;
+    text-align:center;
+    box-shadow: 1px 2px 2px rgba(0,0,0,.3);
+    color:blue;
 }
 
+#songcontainer button
+{
+  font-weight:bold;
+}
+center .btn-block
+{
+  width:70%;
+}
+/*
 a {
   color: #00B7FF;
 }
+.border
+{
+border:1px gray solid;
+border-radius: 4px;
+overflow:auto;
+}
+
+
+#songcontainer hr
+{
+    
+    border-color:white;
+}
+#rowheader
+{
+    font-weight:bold;
+    margin-top:15px;
+    font-size:18px;
+}
+
+
+
+
+*/
