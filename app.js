@@ -5,10 +5,6 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
-//var usernew = require('./routes/usernew');
-var button = require('./routes/button');
-var player = require('./routes/player');
 var http = require('http');
 var path = require('path');
 
@@ -25,7 +21,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname + '/static'));
 app.use(express.static(__dirname + '/audio'));
 
 // development only
@@ -33,11 +28,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// Tells Express to load the index.js file
 app.get('/', routes.index);
-app.get('/button', button.list);
-app.get('/users', user.list);
-//app.get('/usernew', usernew.list);
-app.get('/player', player.list);
+app.get('/player', routes.player);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
