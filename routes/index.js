@@ -19,17 +19,28 @@ exports.index = function (req, res){
 
 // player
 exports.player = function (req, res) {
-    playFile(req.query.name);
-    res.render('index', { title: 'PiTunes', pagetitle: 'PiTunes', audioFiles: mp3Files() });
-    //res.send("player - Trying to Play file: " + req.query.name);
+    
+    var retMsg= playFileRemote(req.query.name) + req.query.name
+   
+    //res.render('index', { title: 'PiTunes', pagetitle: 'PiTunes', audioFiles: mp3Files() });
+    res.writeHead(200, { 'Content-Length': retMsg.length, 'Content-Type' : 'text/xml'} )
+    res.send(retMsg);
 };
 
-function playFile(filename) {
-    fs.createReadStream('audio/' + filename)
-	.pipe(new lame.Decoder())
-	.on('format', function (format) {
-            this.pipe(new Speaker(format));
-        });
+function playFileRemote(filename) {
+    var ret = "Success started playing file: ";
+    try {
+        fs.createReadStream('audio/' + filename)
+	    .pipe(new lame.Decoder())
+	    .on('format', function (format) {
+                    this.pipe(new Speaker(format));
+            });
+        
+    } catch (e) { 
+        ret = "Error: " + e.message + " playing file: "
+    }
+   
+    return ret;
 }
 
 function mp3Files()

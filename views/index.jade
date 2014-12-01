@@ -13,11 +13,9 @@ block content
                 .col-sm-12
                     center
                         label.songtitle #{filename}
-                    br
-                    center
-                        button(class="btn btn-default btn-block" type="button" onclick="window.location.href='/player?name="+ file +"';return false;") Play Remote
-                    
-                    center
+                        br
+                        br
+                        button(class="btn btn-default btn-block" type="button" onclick="remotePlay('" + file + "');") Play Remote
                         label Play Local
                         br 
                         audio(controls,preload="auto", id="done")
