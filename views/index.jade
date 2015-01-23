@@ -7,8 +7,10 @@ block content
     br
     
     #songcontainer.container
+        - var index = 0;
         each file in audioFiles
-            - var filename=file.replace('.mp3','')
+            - var audioID='audio_'+ index++
+            - var ar = file.split("/"); var filename = ar[ar.length-1].replace('.mp3','');
             .songrow.row.whitebox
                 .col-sm-12
                     center
@@ -16,9 +18,10 @@ block content
                         br
                         br
                         button(class="btn btn-default btn-block" type="button" onclick="remotePlay('" + file + "');") Play Remote
-                        label Play Local
-                        br 
-                        audio(controls,preload="auto", id="done")
-                            source(src=file type="audio/mpeg") 
-                            em Your browser does not suppor the audio tag
+                        button(class="btn btn-default btn-block" onclick="document.getElementById('#{audioID}').play()")
+                            label Play Local
+                            br 
+                            audio(controls,preload="none", id='#{audioID}')
+                                source(src=file type="audio/mpeg") 
+                                em Your browser does not suppor the audio tag
             br

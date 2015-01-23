@@ -22,6 +22,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/audio'));
+app.use('/music', express.static('/mnt/vista64audio'));
 
 // development only
 if ('development' == app.get('env')) {

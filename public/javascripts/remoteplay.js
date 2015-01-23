@@ -1,9 +1,7 @@
 ﻿function remotePlay(filename){
-    
-    $.get("/player?name="+filename, function (data) {
-        
-        alert("Played File " + filename);
-
+    var url = "/player?name="+filename;
+   $.get(url).done(function(data) {
+	alert(data);
     });
     
 }
